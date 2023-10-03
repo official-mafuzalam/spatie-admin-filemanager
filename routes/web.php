@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,8 +33,34 @@ Route::middleware('auth')->group(function () {
 
 
 
-Route::get('/admin', function () {
-    return view('admin.index');
-})->middleware(['auth', 'role:admin'])->name('admin.index');
+// Route::get('/admin', function () {
+//     return view('admin.index');
+// })->middleware(['auth', 'role:admin'])->name('admin.index');
 
-require __DIR__.'/auth.php';
+Route::middleware(['auth', 'role:admin'])->group(function () {
+
+    Route::prefix('admin')->group(function () {
+
+        Route::get('/', [HomeController::class, 'index'])->name('admin.index');
+
+        Route::get('/role', [RoleController::class, 'role'])->name('admin.role');
+
+        Route::get('/permission', [PermissionController::class, 'permission'])->name('admin.permission');
+
+
+    });
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+require __DIR__ . '/auth.php';
