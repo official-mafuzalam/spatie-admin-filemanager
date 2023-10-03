@@ -15,4 +15,10 @@ class RoleController extends Controller
         $roles = Role::all();
         return view('admin.role.index', compact('roles'));
     }
+
+    public function createPage(){
+
+        return view('admin.role.create');
+
+    }
 }

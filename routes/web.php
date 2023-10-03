@@ -45,6 +45,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
         Route::get('/role', [RoleController::class, 'role'])->name('admin.role');
 
+        Route::get('/role/create', [RoleController::class, 'createPage'])->name('admin.role.createPage');
+
         Route::get('/permission', [PermissionController::class, 'permission'])->name('admin.permission');
 
 

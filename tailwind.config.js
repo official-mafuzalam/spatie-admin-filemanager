@@ -22,4 +22,5 @@ export default {
         forms,
         require('preline/plugin'),
     ],
+    darkMode: 'class',
 };
