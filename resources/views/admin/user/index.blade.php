@@ -53,7 +53,23 @@
                                                 </span>
                                             </div>
                                         </th>
+                                        <th scope="col" class="pl-6 lg:pl-3 xl:pl-6 pr-6 py-3 text-left">
+                                            <div class="flex items-center gap-x-2 ">
+                                                <span
+                                                    class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+                                                    Email
+                                                </span>
+                                            </div>
+                                        </th>
 
+                                        <th scope="col" class="pl-6 lg:pl-3 xl:pl-6 pr-6 py-3 text-left">
+                                            <div class="flex items-center gap-x-2 ">
+                                                <span
+                                                    class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+                                                    Action
+                                                </span>
+                                            </div>
+                                        </th>
                                         <th scope="col" class="pl-6 lg:pl-3 xl:pl-6 pr-6 py-3 text-left">
                                             <div class="flex items-center gap-x-2 ">
                                                 <span
@@ -67,18 +83,24 @@
 
                                 <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
 
-                                    @foreach ($roles as $role)
+                                    @foreach ($users as $user)
                                         <tr>
                                             <td class="h-px w-72 whitespace-nowrap">
                                                 <div class="px-6 py-3">
                                                     <span
-                                                        class="block text-sm font-semibold text-gray-800 dark:text-gray-200">{{ $role->name }}</span>
+                                                        class="block text-sm font-semibold text-gray-800 dark:text-gray-200">{{ $user->name }}</span>
+                                                </div>
+                                            </td>
+                                            <td class="h-px w-72 whitespace-nowrap">
+                                                <div class="px-6 py-3">
+                                                    <span
+                                                        class="block text-sm font-semibold text-gray-800 dark:text-gray-200">{{ $user->email }}</span>
                                                 </div>
                                             </td>
                                             <td class="h-px w-px whitespace-nowrap">
                                                 <div class="px-6 py-1.5">
                                                     <a class="inline-flex items-center gap-x-1.5 text-sm text-blue-600 decoration-2 hover:underline font-medium"
-                                                        href="{{ route('admin.role.edit', ['id' => $role->id]) }}">
+                                                        href="#">
                                                         Edit
                                                     </a>
                                                 </div>
@@ -86,6 +108,20 @@
                                                     <a class="inline-flex items-center gap-x-1.5 text-sm text-red-600 decoration-2 hover:underline font-medium"
                                                         href="#">
                                                         Delete
+                                                    </a>
+                                                </div>
+                                            </td>
+                                            <td class="h-px w-px whitespace-nowrap">
+                                                <div class="px-6 py-1.5">
+                                                    <a class="inline-flex items-center gap-x-1.5 text-sm text-blue-600 decoration-2 hover:underline font-medium"
+                                                        href="#">
+                                                        Role
+                                                    </a>
+                                                </div>
+                                                <div class="px-6 py-1.5">
+                                                    <a class="inline-flex items-center gap-x-1.5 text-sm text-red-600 decoration-2 hover:underline font-medium"
+                                                        href="#">
+                                                        Permission
                                                     </a>
                                                 </div>
                                             </td>

@@ -7,18 +7,18 @@
             <div class="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-slate-700">
                 <div class="mb-8">
                     <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">
-                        Create New Role
+                        Create New Permission
                     </h2>
                 </div>
 
-                <form action="{{ route('admin.role.create') }}" method="POST">
+                <form action="{{ route('admin.permission.create') }}" method="POST">
                     @csrf
                     <!-- Grid -->
                     <div class="grid sm:grid-cols-12 gap-2 sm:gap-6">
 
                         <div class="sm:col-span-3">
                             <label for="role-name" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200">
-                                Role Name
+                                Permission Name
                             </label>
                         </div>
                         <!-- End Col -->
