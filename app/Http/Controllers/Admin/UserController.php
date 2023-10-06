@@ -33,48 +33,48 @@ class UserController extends Controller
     public function assignRole(Request $request, User $user)
     {
         if ($user->hasRole($request->role)) {
-            return back()->with('message', 'Role exists.');
+            return back()->with('success-trash', 'Role exists.');
         }
 
         $user->assignRole($request->role);
-        return back()->with('message', 'Role assigned.');
+        return back()->with('success', 'Role assigned.');
     }
 
     public function removeRole(User $user, Role $role)
     {
         if ($user->hasRole($role)) {
             $user->removeRole($role);
-            return back()->with('message', 'Role removed.');
+            return back()->with('success-delete', 'Role removed.');
         }
 
-        return back()->with('message', 'Role not exists.');
+        return back()->with('success', 'Role not exists.');
     }
 
     public function givePermission(Request $request, User $user)
     {
         if ($user->hasPermissionTo($request->permission)) {
-            return back()->with('message', 'Permission exists.');
+            return back()->with('success-trash', 'Permission exists.');
         }
         $user->givePermissionTo($request->permission);
-        return back()->with('message', 'Permission added.');
+        return back()->with('success', 'Permission added.');
     }
 
     public function revokePermission(User $user, Permission $permission)
     {
         if ($user->hasPermissionTo($permission)) {
             $user->revokePermissionTo($permission);
-            return back()->with('message', 'Permission revoked.');
+            return back()->with('success-delete', 'Permission revoked.');
         }
-        return back()->with('message', 'Permission does not exists.');
+        return back()->with('success', 'Permission does not exists.');
     }
 
     public function destroy(User $user)
     {
         if ($user->hasRole('admin')) {
-            return back()->with('message', 'you are admin.');
+            return back()->with('success-trash', 'you are admin.');
         }
         $user->delete();
 
-        return back()->with('message', 'User deleted.');
+        return back()->with('success', 'User deleted.');
     }
 }
