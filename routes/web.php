@@ -18,6 +18,16 @@ use App\Http\Controllers\Admin\UserController;
 |
 */
 
+Route::get('/session', function () {
+
+    $session = session()->all();
+
+    echo "<pre>";
+    print_r($session);
+    echo "</pre>";
+
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -30,6 +40,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::middleware(['role:editor'])->group(function () {
+    Route::get('editor/dashboard', 'EditorController@dashboard')->name('editor.dashboard');
+    // Other editor routes
+});
+
+Route::middleware(['role:user'])->group(function () {
+    Route::get('user/dashboard', 'UserController@dashboard')->name('user.dashboard');
+    // Other user routes
 });
 
 
@@ -90,6 +110,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/users/{user}/permissions', [UserController::class, 'givePermission'])->name('admin.users.permissions');
         Route::delete('/users/{user}/permissions/{permission}', [UserController::class, 'revokePermission'])->name('admin.users.permissions.revoke');
 
+        Route::get('/check-permissions',[PermissionController::class, 'checkPer']);
 
     });
 

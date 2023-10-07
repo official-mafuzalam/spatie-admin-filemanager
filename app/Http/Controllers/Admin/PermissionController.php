@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -21,7 +22,7 @@ class PermissionController extends Controller
 
     public function permissionCreatePage()
     {
-        
+
         return view('admin.permission.create');
     }
 
@@ -37,10 +38,12 @@ class PermissionController extends Controller
     public function permissionEditPage($id)
     {
         $roles = Role::all();
-        $permission = Permission::findOrFail($id);
-        return view('admin.permission.edit', compact('permission','roles'));
 
-         // echo "<pre>";
+        $permission = Permission::findOrFail($id);
+
+        return view('admin.permission.edit', compact('permission', 'roles'));
+
+        // echo "<pre>";
         // print_r($request->toArray());
     }
 
@@ -77,6 +80,15 @@ class PermissionController extends Controller
     }
 
 
+    public function checkPer()
+    {
+        $userPermissions = auth()->user()->getAllPermissions()->pluck('name');
+        // return view('your.view', compact('userPermissions'));
+
+        echo "<pre>";
+        print_r($userPermissions->toArray());
+
+    }
 
 
 
