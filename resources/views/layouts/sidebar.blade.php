@@ -58,7 +58,7 @@
             @role('super_admin')
                 <li>
                     <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300"
-                        href="{{ route('admin.role') }}">
+                        href="{{ route('admin.images_all') }}">
                         <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                             fill="currentColor" viewBox="0 0 16 16">
                             <path
@@ -73,7 +73,7 @@
             @role('super_admin')
                 <li>
                     <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300"
-                        href="{{ route('admin.role') }}">
+                        href="{{ route('admin.blog_allPage') }}">
                         <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                             fill="currentColor" viewBox="0 0 16 16">
                             <path

@@ -6,6 +6,9 @@ use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\ImageController;
+use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\AnnouncementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +28,7 @@ Route::get('/session', function () {
     echo "<pre>";
     print_r($session);
     echo "</pre>";
+
 
 });
 
@@ -104,13 +108,52 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/users', [UserController::class, 'user'])->name('admin.user');
 
         Route::get('/users/{user}', [UserController::class, 'show'])->name('admin.users.show');
+
         Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy');
+        
         Route::post('/users/{user}/roles', [UserController::class, 'assignRole'])->name('admin.users.roles');
+        
         Route::delete('/users/{user}/roles/{role}', [UserController::class, 'removeRole'])->name('admin.users.roles.remove');
+        
         Route::post('/users/{user}/permissions', [UserController::class, 'givePermission'])->name('admin.users.permissions');
+        
         Route::delete('/users/{user}/permissions/{permission}', [UserController::class, 'revokePermission'])->name('admin.users.permissions.revoke');
 
         Route::get('/check-permissions',[PermissionController::class, 'checkPer']);
+
+
+
+        // Images
+        
+        Route::get('/image-upload', [ImageController::class, 'index'])->name('admin.image_add');
+
+        Route::post('/image-upload', [ImageController::class, 'store'])->name('image.store');
+
+        Route::get('/images_all', [ImageController::class, 'images_all'])->name('admin.images_all');
+
+        Route::delete('/delete-image/{folder}/{image}', [ImageController::class, 'deleteImage'])->name('deleteImage');
+
+        Route::delete('/delete-folder/{folder}', [ImageController::class, 'deleteFolder'])->name('deleteFolder');
+
+
+        // Blog
+
+        Route::get('/add_blog', [BlogController::class, 'add_blogPage'])->name('admin.add_blogPage');
+
+        Route::post('/add_blog', [BlogController::class, 'add_blog'])->name('admin.add_blog');
+
+        Route::get('/blog_all', [BlogController::class, 'blog_allPage'])->name('admin.blog_allPage');
+
+        Route::get('/blog_edit/{id}', [BlogController::class, 'blog_edit'])->name('admin.blog_edit');
+
+        Route::post('/blog_update/{id}', [BlogController::class, 'blog_update'])->name('admin.blog_update');
+
+        Route::get('/blog_delete/{id}', [BlogController::class, 'blog_delete'])->name('admin.blog_delete');
+
+        Route::get('/blog_status/{status}/{id}', [BlogController::class, 'blog_status'])->name('admin.blog_status');
+
+        
+        
 
     });
 
