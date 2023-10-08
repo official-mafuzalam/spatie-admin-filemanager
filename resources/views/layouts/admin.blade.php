@@ -1,10 +1,11 @@
-@include('layouts.header')
-@include('layouts.sidebar')
+@include('layouts.admin.header')
+@include('layouts.admin.sidebar')
 
 
 
 <!-- Content -->
 <div class="w-full pt-5 px-4 sm:px-6 md:px-8 lg:pl-72">
+    
     @if (session('success'))
         <div id="dismiss-alert"
             class="hs-removing:translate-x-5 hs-removing:opacity-0 transition duration-300 bg-teal-50 border border-teal-200 rounded-md p-4"
@@ -122,4 +123,4 @@
 <!-- End Content -->
 <!-- ========== END MAIN CONTENT ========== -->
 
-@include('layouts.footer')
+@include('layouts.admin.footer')

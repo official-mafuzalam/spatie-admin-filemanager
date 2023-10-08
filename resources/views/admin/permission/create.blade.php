@@ -2,13 +2,18 @@
     <x-slot name="main">
 
         <!-- Card Section -->
-        <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-            <!-- Card -->
-            <div class="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-slate-700">
+        <div class="w-full pt-5 px-4 sm:px-6 md:px-8">
+
+
+            <div class="bg-slate-300 rounded-xl shadow p-4 mb-10 sm:p-7 dark:bg-slate-800">
                 <div class="mb-8">
-                    <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200 text-center">
                         Create New Permission
                     </h2>
+                    <label class="inline-block text-sm font-medium dark:text-gray-400">
+                        Permission info
+                    </label>
+
                 </div>
 
                 <form action="{{ route('admin.permission.create') }}" method="POST">
@@ -26,7 +31,7 @@
                         <div class="sm:col-span-9">
                             <input id="role-name" type="text" name="name"
                                 class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
-                                placeholder="admin">
+                                placeholder="edit">
                         </div>
 
                         @error('name')

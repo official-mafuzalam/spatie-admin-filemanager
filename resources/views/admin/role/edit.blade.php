@@ -2,13 +2,17 @@
     <x-slot name="main">
 
         <!-- Card Section -->
-        <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-            <!-- Card -->
-            <div class="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-slate-700">
+        <div class="w-full pt-5 px-4 sm:px-6 md:px-8">
+
+            <div class="bg-slate-300 rounded-xl shadow p-4 mb-10 sm:p-7 dark:bg-slate-800">
                 <div class="mb-8">
-                    <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">
-                        Create New Role
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200 text-center">
+                        Edit Role
                     </h2>
+                    <label class="inline-block text-sm font-medium dark:text-gray-400">
+                        Role info
+                    </label>
+
                 </div>
 
                 <form action="{{ route('admin.role.update', $role->id) }}" method="POST">
@@ -52,12 +56,17 @@
                     </div>
                 </form>
             </div>
-            <!-- End Card -->
+        </div>
+        <!-- End Card -->
 
-            <div class="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-slate-700 mt-2">
+        <!-- Card Section -->
+        <div class="w-full pt-5 px-4 sm:px-6 md:px-8">
+
+
+            <div class="bg-slate-300 rounded-xl shadow p-4 mb-10 sm:p-7 dark:bg-slate-800">
                 <div class="mb-8">
-                    <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">
-                        Role Permission
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200 text-center">
+                        Roles Permissions
                     </h2>
                 </div>
                 <div class="flex space-x-2 p-2">
@@ -88,21 +97,12 @@
                             <select id="permission" name="permission" autocomplete="permission-name"
                                 class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                 @foreach ($permissions as $permission)
-                                    <option value="{{ $permission->name ?? '' }}">{{ $permission->name ?? '' }}</option>
+                                    <option value="{{ $permission->name ?? '' }}">{{ $permission->name ?? '' }}
+                                    </option>
                                 @endforeach
 
                             </select>
                         </div>
-
-                        @error('permission')
-                            <div class="sm:col-span-3">
-                            </div>
-
-                            <div class="sm:col-span-9">
-                                <span class="text-red-600">{{ $message }}</span>
-                            </div>
-                        @enderror
-
                     </div>
 
                     <div class="mt-5 flex justify-end gap-x-2">
@@ -114,8 +114,7 @@
                 </form>
 
             </div>
+            <!-- End Card Section -->
         </div>
-        <!-- End Card Section -->
-
     </x-slot>
 </x-admin-layout>

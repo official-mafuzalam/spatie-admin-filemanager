@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\AnnouncementController;
+use App\Http\Controllers\PublicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,9 +33,56 @@ Route::get('/session', function () {
 
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+// Public
+
+Route::get('/', [PublicController::class, 'welcome'])->name('welcome');
+
+Route::get('/about-us', [PublicController::class, 'about'])->name('about_us');
+
+Route::get('/services', [PublicController::class, 'services'])->name('services');
+
+Route::get('/products/polytechnic-management-system', [PublicController::class, 'polytechnic'])->name('polytechnic');
+
+Route::get('/products/collage-management-system', [PublicController::class, 'collage'])->name('collage');
+
+Route::get('/products/school-management-system', [PublicController::class, 'school'])->name('school');
+
+Route::get('/products/shop-management-system', [PublicController::class, 'shop'])->name('shop');
+
+Route::get('/products/ticket-management-system', [PublicController::class, 'ticket'])->name('ticket');
+
+Route::get('/products/ecommerce-management-system', [PublicController::class, 'ecommerce'])->name('ecommerce');
+
+Route::get('/products/custom-software', [PublicController::class, 'custom'])->name('custom');
+
+Route::get('/blogs', [PublicController::class, 'blog'])->name('blog');
+
+Route::get('/blog/{id}', [PublicController::class, 'blog_single'])->name('blog_single');
+
+Route::get('/contact', [PublicController::class, 'contactPage'])->name('contactPage');
+
+Route::post('/contact', [PublicController::class, 'contact'])->name('contact');
+
+Route::post('/subscribe', [PublicController::class, 'subscribe'])->name('subscribe');
+
+Route::get('/privacy-policy', [PublicController::class, 'privacy'])->name('privacy-policy');
+
+Route::get('/our-mission-and-vision', [PublicController::class, 'missionVision'])->name('missionVision');
+
+
+
+
+
+
+
+
+
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -110,21 +158,21 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/users/{user}', [UserController::class, 'show'])->name('admin.users.show');
 
         Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy');
-        
+
         Route::post('/users/{user}/roles', [UserController::class, 'assignRole'])->name('admin.users.roles');
-        
+
         Route::delete('/users/{user}/roles/{role}', [UserController::class, 'removeRole'])->name('admin.users.roles.remove');
-        
+
         Route::post('/users/{user}/permissions', [UserController::class, 'givePermission'])->name('admin.users.permissions');
-        
+
         Route::delete('/users/{user}/permissions/{permission}', [UserController::class, 'revokePermission'])->name('admin.users.permissions.revoke');
 
-        Route::get('/check-permissions',[PermissionController::class, 'checkPer']);
+        Route::get('/check-permissions', [PermissionController::class, 'checkPer']);
 
 
 
         // Images
-        
+
         Route::get('/image-upload', [ImageController::class, 'index'])->name('admin.image_add');
 
         Route::post('/image-upload', [ImageController::class, 'store'])->name('image.store');
@@ -152,8 +200,31 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
         Route::get('/blog_status/{status}/{id}', [BlogController::class, 'blog_status'])->name('admin.blog_status');
 
-        
-        
+
+        // Announcement
+
+
+        Route::get('/announcement', [AnnouncementController::class, 'announcementPage'])->name('admin.announcementPage');
+
+        Route::get('/announcement_add', [AnnouncementController::class, 'announcementAddPage'])->name('admin.announcementAddPage');
+
+        Route::post('/announcement_add', [AnnouncementController::class, 'announcementAdd'])->name('admin.announcementAdd');
+
+        Route::get('/announcement_edit/{id}', [AnnouncementController::class, 'announcement_edit'])->name('admin.announcement_edit');
+
+        Route::post('/announce_update/{id}', [AnnouncementController::class, 'announcement_update'])->name('admin.announcement_update');
+
+        Route::get('/announcement_delete/{id}', [AnnouncementController::class, 'announcement_delete'])->name('admin.announcement_delete');
+
+        Route::get('/announcement_status/{status}/{id}', [AnnouncementController::class, 'announcement_status'])->name('admin.announcement_status');
+
+
+        // Subscriber
+
+        Route::get('/subscribers', [AnnouncementController::class, 'subscribers'])->name('admin.subscribers');
+
+
+
 
     });
 
