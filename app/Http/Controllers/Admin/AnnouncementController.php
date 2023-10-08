@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Subscriber;
 use App\Models\Announcement;
+use Illuminate\Support\Facades\Auth;
 
 class AnnouncementController extends Controller
 {
@@ -28,10 +29,15 @@ class AnnouncementController extends Controller
 
     public function announcementAdd(Request $request)
     {
+        $user = Auth::user();
+
         $announce = new announcement;
 
         $announce->message = $request['message'];
         $announce->link = $request['link'];
+        $announce->inserter_name = $user->name;
+        $announce->inserter_email = $user->email;
+
         $announce->save();
 
         return to_route('admin.announcementPage')->with('success', 'New announcement added successfully.');
@@ -51,10 +57,14 @@ class AnnouncementController extends Controller
 
     public function announcement_update(Request $request, $id)
     {
+        $user = Auth::user();
+
         $announce = announcement::find($id);
 
         $announce->message = $request['message'];
         $announce->link = $request['link'];
+        $announce->inserter_name = $user->name;
+        $announce->inserter_email = $user->email;
         $announce->save();
 
         return to_route('admin.announcementPage')->with('success', 'Announcement update successfully.');

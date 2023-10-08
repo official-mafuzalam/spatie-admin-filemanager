@@ -270,7 +270,7 @@
                 class="flex flex-col rounded-xl p-4 md:p-6 bg-gray-100 border border-gray-200 dark:bg-slate-900 dark:border-gray-700">
                 <div class="flex items-center gap-x-4">
                     <img class="rounded-full w-20 h-20"
-                        src="{{ url('/','images/06_09_2023/1694036741.jpg') }}"
+                        src="{{ url('/','images/08_10_2023/1696789813.jpg') }}"
                         alt="Image Description">
                     <div class="grow">
                         <h3 class="font-medium text-gray-800 dark:text-gray-200">
@@ -568,7 +568,7 @@
             <div
                 class="flex flex-col rounded-xl p-4 md:p-6 bg-gray-100 border border-gray-200 dark:bg-slate-900 dark:border-gray-700">
                 <div class="flex items-center gap-x-4">
-                    <img class="rounded-full w-20 h-20" src="{{ url('/', 'images/06_09_2023/1694036445.jpg') }}"
+                    <img class="rounded-full w-20 h-20" src="{{ url('/', 'images/08_10_2023/1696789822.jpg') }}"
                         alt="Image Description">
                     <div class="grow">
                         <h3 class="font-medium text-gray-800 dark:text-gray-200">

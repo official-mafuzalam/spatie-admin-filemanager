@@ -5,15 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @yield('page-title')
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 
     <link rel="icon" href="fabicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="fabicon.ico" type="image/x-icon">
 
-    {{-- <link rel="preload" as="style" href="{{ asset('build/assets/app-50e7dbd5.css') }}" />
-    <link rel="stylesheet" href="{{ asset('build/assets/app-50e7dbd5.css') }}" />
+    <link rel="preload" as="style" href="{{ asset('build/assets/app-7cebb1ca.css') }}" />
+    <link rel="stylesheet" href="{{ asset('build/assets/app-7cebb1ca.css') }}" />
     <link rel="modulepreload" href="{{ asset('build/assets/preline-90866586.js') }}" />
-    <script type="module" src="{{ asset('build/assets/preline-90866586.js') }}"></script> --}}
+    <script type="module" src="{{ asset('build/assets/preline-90866586.js') }}"></script>
 </head>
 
 <body class="dark:bg-gray-800">

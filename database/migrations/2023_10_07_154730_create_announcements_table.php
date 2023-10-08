@@ -16,6 +16,8 @@ return new class extends Migration
             $table->longText('message');
             $table->string('link');
             $table->tinyInteger('status')->default(0);
+            $table->string('inserter_name');
+            $table->string('inserter_email');
             $table->timestamps();
         });
     }

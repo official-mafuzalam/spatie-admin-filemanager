@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Blog;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
@@ -24,6 +25,7 @@ class BlogController extends Controller
     public function add_blog(Request $request)
     {
 
+        $user = Auth::user();
 
         $blog = new Blog;
 
@@ -35,12 +37,16 @@ class BlogController extends Controller
         $blog->author = $request['author'];
         $blog->author_link = $request['author_link'];
         $blog->date = $request['date'];
+        $blog->inserter_name = $user->name;
+        $blog->inserter_email = $user->email;
         $blog->save();
 
-        return back()->with('success', 'New blog added successfully.');
+        return to_route('admin.blog_allPage')->with('success', 'New blog added successfully.');
 
-        // echo '<pre>';
-        // print_r($request->toArray());
+        // echo "<pre>";
+        // print_r($user->name);
+        // print_r($user->email);
+        // echo "</pre>";
     }
 
     public function blog_allPage()
@@ -69,6 +75,7 @@ class BlogController extends Controller
 
     public function blog_update($id, Request $request)
     {
+        $user = Auth::user();
 
         $blog = Blog::find($id);
 
@@ -79,6 +86,8 @@ class BlogController extends Controller
         $blog->author = $request['author'];
         $blog->author_link = $request['author_link'];
         $blog->date = $request['date'];
+        $blog->inserter_name = $user->name;
+        $blog->inserter_email = $user->email;
         $blog->save();
 
         // return back()->with('success', 'New blog added successfully.');
@@ -108,12 +117,12 @@ class BlogController extends Controller
         if ($blog) {
 
             $blog->update(['status' => $status]);
-            if ($status==1) {
+            if ($status == 1) {
                 return back()->with('success', 'Blog published successfully.');
-            } else{
+            } else {
                 return back()->with('success', 'Blog draft successfully.');
             }
-        
+
         } else {
 
             return back()->with('success-delete', 'Blog not found.');

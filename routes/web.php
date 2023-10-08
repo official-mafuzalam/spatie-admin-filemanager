@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\AnnouncementController;
+use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\PublicController;
 
 /*
@@ -106,15 +107,22 @@ Route::middleware(['role:user'])->group(function () {
 
 
 
-// Route::get('/admin', function () {
-//     return view('admin.index');
-// })->middleware(['auth', 'role:admin'])->name('admin.index');
 
-Route::middleware(['auth', 'role:admin'])->group(function () {
+
+
+// Super Admin Only
+
+Route::middleware(['auth', 'role:super_admin'])->group(function () {
 
     Route::prefix('admin')->group(function () {
 
-        Route::get('/', [HomeController::class, 'index'])->name('admin.index');
+        // login User info
+        Route::get('/info', function () {
+            $user = Auth::user();
+            echo "<pre>";
+            print_r($user);
+            echo "</pre>";
+        });
 
         // Roles
 
@@ -169,6 +177,18 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
         Route::get('/check-permissions', [PermissionController::class, 'checkPer']);
 
+    });
+});
+
+
+
+// Super Admin, Admin.
+
+Route::middleware(['auth', 'role:super_admin|admin|manager|user'])->group(function () {
+
+    Route::prefix('admin')->group(function () {
+
+        Route::get('/', [HomeController::class, 'index'])->name('admin.index');
 
 
         // Images
@@ -182,6 +202,17 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::delete('/delete-image/{folder}/{image}', [ImageController::class, 'deleteImage'])->name('deleteImage');
 
         Route::delete('/delete-folder/{folder}', [ImageController::class, 'deleteFolder'])->name('deleteFolder');
+
+    });
+});
+
+// Super Admin, Admin, Manager, User.
+
+Route::middleware(['auth', 'role:super_admin|admin|manager|user'])->group(function () {
+
+    Route::prefix('admin')->group(function () {
+
+        Route::get('/', [HomeController::class, 'index'])->name('admin.index');
 
 
         // Blog
@@ -223,6 +254,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
         Route::get('/subscribers', [AnnouncementController::class, 'subscribers'])->name('admin.subscribers');
 
+
+        // Account
+
+        Route::get('/account', [AccountController::class, 'index'])->name('admin.accountPage');
 
 
 

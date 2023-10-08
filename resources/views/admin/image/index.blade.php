@@ -23,15 +23,17 @@
                                     View all
                                 </a>
 
-                                <a class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
-                                    href="{{ route('admin.image_add') }}">
-                                    <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="16"
-                                        height="16" viewBox="0 0 16 16" fill="none">
-                                        <path d="M2.63452 7.50001L13.6345 7.5M8.13452 13V2" stroke="currentColor"
-                                            stroke-width="2" stroke-linecap="round" />
-                                    </svg>
-                                    Create New
-                                </a>
+                                @can('write')
+                                    <a class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+                                        href="{{ route('admin.image_add') }}">
+                                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="16"
+                                            height="16" viewBox="0 0 16 16" fill="none">
+                                            <path d="M2.63452 7.50001L13.6345 7.5M8.13452 13V2" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" />
+                                        </svg>
+                                        Create New
+                                    </a>
+                                @endcan
                             </div>
                         </div>
                     </div>
@@ -48,16 +50,18 @@
                                         <img class="w-full h-auto rounded-t-xl"
                                             src="{{ asset('images/' . $folder['name'] . '/' . $image) }}"
                                             alt="{{ $image }}">
-                                        <form
-                                            action="{{ route('deleteImage', ['folder' => $folder['name'], 'image' => $image]) }}"
-                                            method="POST">
-                                            @csrf
-                                            @method('DELETE') <!-- Use this to set the HTTP method to DELETE -->
-                                            <button type="submit"
-                                                class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded">
-                                                Delete
-                                            </button>
-                                        </form>
+                                        @can('special_delete')
+                                            <form
+                                                action="{{ route('deleteImage', ['folder' => $folder['name'], 'image' => $image]) }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('DELETE') <!-- Use this to set the HTTP method to DELETE -->
+                                                <button type="submit"
+                                                    class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        @endcan
                                         <button
                                             class="absolute bottom-2 right-2 bg-blue-500 text-white px-2 py-1 rounded"
                                             onclick="copyImagePath('{{ asset('images/' . $folder['name'] . '/' . $image) }}')">
@@ -66,13 +70,15 @@
                                     </div>
                                 @endforeach
                             </div>
-                            <form action="{{ route('deleteFolder', ['folder' => $folder['name']]) }}" method="POST">
-                                @csrf
-                                @method('DELETE') <!-- Use this to set the HTTP method to DELETE -->
-                                <button type="submit" class="mt-2 bg-red-500 text-white px-2 py-1 rounded">
-                                    Delete Folder
-                                </button>
-                            </form>
+                            @can('special_delete')
+                                <form action="{{ route('deleteFolder', ['folder' => $folder['name']]) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE') <!-- Use this to set the HTTP method to DELETE -->
+                                    <button type="submit" class="mt-2 bg-red-500 text-white px-2 py-1 rounded">
+                                        Delete Folder
+                                    </button>
+                                </form>
+                            @endcan
                         </div>
                     @endforeach
 

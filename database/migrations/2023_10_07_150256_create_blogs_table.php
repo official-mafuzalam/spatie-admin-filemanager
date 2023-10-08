@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('author');
             $table->string('author_link');
             $table->string('date');
+            $table->string('inserter_name');
+            $table->string('inserter_email');
             $table->timestamps();
             $table->softDeletes();
         });
