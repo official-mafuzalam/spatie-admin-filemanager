@@ -1,1 +1,1 @@
-# spatie-admin
+# spatie-admin-panel
