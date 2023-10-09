@@ -15,7 +15,7 @@
         <!-- End Navigation Toggle -->
 
         <!-- Breadcrumb -->
-        <ol class="ml-3 flex items-center whitespace-nowrap min-w-0" aria-label="Breadcrumb">
+        {{-- <ol class="ml-3 flex items-center whitespace-nowrap min-w-0" aria-label="Breadcrumb">
             <li class="flex items-center text-sm text-gray-800 dark:text-gray-400">
                 Application Layout
                 <svg class="flex-shrink-0 mx-3 overflow-visible h-2.5 w-2.5 text-gray-400 dark:text-gray-600"
@@ -27,7 +27,7 @@
             <li class="text-sm font-semibold text-gray-800 truncate dark:text-gray-400" aria-current="page">
                 Dashboard
             </li>
-        </ol>
+        </ol> --}}
         <!-- End Breadcrumb -->
     </div>
 </div>
@@ -37,7 +37,7 @@
 <div id="application-sidebar"
     class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform hidden fixed top-0 left-0 bottom-0 z-[60] w-64 bg-white border-r border-gray-200 pt-7 pb-10 overflow-y-auto scrollbar-y lg:block lg:translate-x-0 lg:right-auto lg:bottom-0 dark:scrollbar-y dark:bg-gray-800 dark:border-gray-700">
     <div class="px-6">
-        <a class="flex-none text-xl font-semibold dark:text-white" href="#" aria-label="Brand">Brand</a>
+        <a class="flex-none text-xl font-semibold dark:text-white" href="#" aria-label="Octosync Software Ltd">Octosync Software Ltd</a>
     </div>
 
     <nav class="hs-accordion-group p-6 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>

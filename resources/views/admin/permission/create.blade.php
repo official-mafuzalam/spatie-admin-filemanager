@@ -1,9 +1,12 @@
 <x-admin-layout>
     <x-slot name="main">
 
+        @section('page-title')
+            <title>Permission Create</title>
+        @endsection
+
         <!-- Card Section -->
         <div class="w-full pt-5 px-4 sm:px-6 md:px-8">
-
 
             <div class="bg-slate-300 rounded-xl shadow p-4 mb-10 sm:p-7 dark:bg-slate-800">
                 <div class="mb-8">

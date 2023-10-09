@@ -1,6 +1,10 @@
 <x-admin-layout>
     <x-slot name="main">
 
+        @section('page-title')
+            <title>Permission Edit</title>
+        @endsection
+
         <!-- Card Section -->
         <div class="w-full pt-5 px-4 sm:px-6 md:px-8">
 

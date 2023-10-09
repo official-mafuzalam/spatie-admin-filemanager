@@ -1,6 +1,10 @@
 <x-admin-layout>
     <x-slot name="main">
 
+        @section('page-title')
+            <title>Roles</title>
+        @endsection
+
         <div class="w-full pt-5 px-4 sm:px-6 md:px-8">
 
             <div class="bg-slate-300 rounded-xl shadow dark:bg-slate-800">

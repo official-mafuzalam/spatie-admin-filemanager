@@ -1,6 +1,10 @@
 <x-admin-layout>
     <x-slot name="main">
 
+        @section('page-title')
+            <title>Blog</title>
+        @endsection
+
         <div class="w-full pt-5 px-4 sm:px-6 md:px-8">
 
 
@@ -232,7 +236,7 @@
                                                                                 d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
                                                                         </svg>
                                                                     </button>
-                                                                    @canany(['write','edit'])
+                                                                    @canany(['write', 'edit'])
                                                                         <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden divide-y divide-gray-200 min-w-[10rem] z-10 bg-white shadow-2xl rounded-lg p-2 mt-2 dark:divide-gray-700 dark:bg-gray-800 dark:border dark:border-gray-700"
                                                                             aria-labelledby="hs-table-dropdown-2">
                                                                             <div class="py-2 first:pt-0 last:pb-0">

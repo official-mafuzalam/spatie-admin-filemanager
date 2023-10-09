@@ -258,7 +258,19 @@ Route::middleware(['auth', 'role:super_admin|admin|manager|user'])->group(functi
         // Account
 
         Route::get('/account', [AccountController::class, 'index'])->name('admin.accountPage');
+        
+        Route::get('/deposit_all', [AccountController::class, 'deposit_allPage'])->name('admin.deposit_allPage');
+        
+        Route::get('/deposit', [AccountController::class, 'depositPage'])->name('admin.depositPage');
+       
+        Route::post('/deposit', [AccountController::class, 'deposit'])->name('admin.deposit');
 
+        Route::get('/cost_all', [AccountController::class, 'cost_allPage'])->name('admin.cost_allPage');
+
+        Route::get('/cost', [AccountController::class, 'costPage'])->name('admin.costPage');
+
+        Route::post('/cost', [AccountController::class, 'cost'])->name('admin.cost');
+       
 
 
     });

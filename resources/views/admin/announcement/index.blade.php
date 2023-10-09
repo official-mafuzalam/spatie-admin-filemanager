@@ -1,6 +1,10 @@
 <x-admin-layout>
     <x-slot name="main">
 
+        @section('page-title')
+            <title>Announcement</title>
+        @endsection
+
         <div class="w-full pt-5 px-4 sm:px-6 md:px-8">
 
             <div class="bg-slate-300 rounded-xl shadow dark:bg-slate-800">
@@ -208,7 +212,7 @@
                                                     <td>
                                                         <span
                                                             class="bg-clip-text bg-gradient-to-tl from-blue-600 to-violet-600 text-transparent">
-                                                            No blog found in database
+                                                            No Announcement found in database
                                                         </span>
                                                     </td>
                                                 </tr>
