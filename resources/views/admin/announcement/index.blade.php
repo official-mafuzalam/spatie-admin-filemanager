@@ -32,10 +32,10 @@
 
                                         <div>
                                             <div class="inline-flex gap-x-2">
-                                                <a class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                                                {{-- <a class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
                                                     href="#">
                                                     View all
-                                                </a>
+                                                </a> --}}
 
                                                 @can('write')
                                                     <a class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
@@ -222,12 +222,12 @@
                                     <!-- End Table -->
 
                                     <!-- Footer -->
-                                    <div
+                                    {{-- <div
                                         class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200 dark:border-gray-700">
                                         <div>
-                                            {{-- <p class="text-sm text-gray-600 dark:text-gray-400">
+                                            <p class="text-sm text-gray-600 dark:text-gray-400">
                                         <span class="font-semibold text-gray-800 dark:text-gray-200">6</span> results
-                                    </p> --}}
+                                    </p>
                                         </div>
 
                                         <div>
@@ -255,7 +255,7 @@
                                                 </button>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <!-- End Footer -->
                                 </div>
                             </div>

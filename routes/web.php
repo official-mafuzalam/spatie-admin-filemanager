@@ -89,26 +89,16 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
+
+
+// login User Profile
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-Route::middleware(['role:editor'])->group(function () {
-    Route::get('editor/dashboard', 'EditorController@dashboard')->name('editor.dashboard');
-    // Other editor routes
-});
-
-Route::middleware(['role:user'])->group(function () {
-    Route::get('user/dashboard', 'UserController@dashboard')->name('user.dashboard');
-    // Other user routes
-});
-
-
-
-
-
 
 // Super Admin Only
 
@@ -184,7 +174,7 @@ Route::middleware(['auth', 'role:super_admin'])->group(function () {
 
 // Super Admin, Admin.
 
-Route::middleware(['auth', 'role:super_admin|admin|manager|user'])->group(function () {
+Route::middleware(['auth', 'role:super_admin|admin'])->group(function () {
 
     Route::prefix('admin')->group(function () {
 
