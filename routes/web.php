@@ -36,11 +36,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+
 
 Route::middleware(['role:editor'])->group(function () {
     Route::get('editor/dashboard', 'EditorController@dashboard')->name('editor.dashboard');
@@ -63,6 +59,15 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::prefix('admin')->group(function () {
 
         Route::get('/', [HomeController::class, 'index'])->name('admin.index');
+
+        // Profile
+
+        Route::middleware('auth')->group(function () {
+            Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+            Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+            Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+        });
+
 
         // Roles
 
@@ -110,7 +115,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/users/{user}/permissions', [UserController::class, 'givePermission'])->name('admin.users.permissions');
         Route::delete('/users/{user}/permissions/{permission}', [UserController::class, 'revokePermission'])->name('admin.users.permissions.revoke');
 
-        Route::get('/check-permissions',[PermissionController::class, 'checkPer']);
+        Route::get('/check-permissions', [PermissionController::class, 'checkPer']);
 
     });
 
