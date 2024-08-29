@@ -70,11 +70,13 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
-        if ($user->hasRole('admin')) {
-            return back()->with('success-trash', 'you are admin.');
+        if ($user->hasAnyRole(['super_admin', 'admin'])) {
+            return back()->with('success-trash', 'You cannot delete a user with super_admin or admin role.');
         }
+
         $user->delete();
 
-        return back()->with('success', 'User deleted.');
+        return back()->with('success-delete', 'User deleted.');
     }
+
 }

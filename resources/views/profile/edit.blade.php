@@ -25,6 +25,13 @@
                         @include('profile.partials.delete-user-form')
                     </div>
                 </div>
+                <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+                    <div class="max-w-xl">
+                        <div class="ml-4 text-center text-sm text-gray-500 dark:text-gray-400 sm:text-right sm:ml-0">
+                            Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </x-slot>

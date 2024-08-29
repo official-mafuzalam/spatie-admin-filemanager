@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use spatie\Permission\Models\Permission;
 
 class AdminSeeder extends Seeder
 {
@@ -18,9 +19,16 @@ class AdminSeeder extends Seeder
                 'name' => 'Admin',
                 'email' => 'admin@gmail.com',
                 'email_verified_at' => now(),
-                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+                'password' => bcrypt('password'), // Use bcrypt for hashing passwords
             ]
         );
-        $user->assignRole('writer', 'admin');
+
+        // Assign roles
+        $user->assignRole('super_admin', 'admin', 'user');
+
+        // Give super_admin all permissions
+        $permissions = Permission::all();
+        $user->givePermissionTo($permissions);
     }
+
 }

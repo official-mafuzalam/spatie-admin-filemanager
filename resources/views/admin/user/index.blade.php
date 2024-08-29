@@ -109,10 +109,18 @@
                                                             </a>
                                                         </div>
                                                         <div class="px-6 py-1.5">
-                                                            <a class="inline-flex items-center gap-x-1.5 text-sm text-red-600 decoration-2 hover:underline font-medium"
-                                                                href="#">
-                                                                Delete
-                                                            </a>
+                                                            <form action="{{ route('admin.users.destroy', $user->id) }}"
+                                                                method="POST"
+                                                                onsubmit="return confirm('Are you sure you want to delete this user?');"
+                                                                class="inline">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit"
+                                                                    class="inline-flex items-center gap-x-1.5 text-sm text-red-600 decoration-2 hover:underline font-medium">
+                                                                    Delete
+                                                                </button>
+                                                            </form>
+
                                                         </div>
                                                     </td>
                                                 </tr>
