@@ -57,6 +57,9 @@ Route::middleware(['auth', 'role:super_admin|admin|user'])->group(function () {
 
         Route::get('/', [HomeController::class, 'index'])->name('admin.index');
 
+        Route::group(['prefix' => 'file-manager', 'middleware' => ['web', 'auth']], function () {
+            \UniSharp\LaravelFilemanager\Lfm::routes();
+        });
 
     });
 
