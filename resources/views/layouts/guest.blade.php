@@ -14,6 +14,11 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    {{-- <link rel="preload" as="style" href="{{ asset('build/assets/app-0111b33a.css') }}" />
+    <link rel="stylesheet" href="{{ asset('build/assets/app-0111b33a.css') }}" />
+    <link rel="modulepreload" href="{{ asset('build/assets/preline-90866586.js') }}" />
+    <script type="module" src="{{ asset('build/assets/preline-90866586.js') }}"></script> --}}
 </head>
 
 <body class="font-sans text-gray-900 antialiased">
